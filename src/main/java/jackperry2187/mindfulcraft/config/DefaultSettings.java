@@ -13,7 +13,7 @@ import static jackperry2187.mindfulcraft.util.Message.generateSimpleMessage;
 import static jackperry2187.mindfulcraft.util.Message.generateUniqueMessage;
 
 public class DefaultSettings {
-    public static final int configVersion = 1;
+    public static final int configVersion = 2;
     public static final boolean enabled = true;
     public static final int timeBetweenMessages = 10; // in minutes
     public static final String defaultTitle = "MindfulCraft Message";
