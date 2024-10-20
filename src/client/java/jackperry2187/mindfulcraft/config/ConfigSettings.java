@@ -31,7 +31,7 @@ public class ConfigSettings {
     public static int highestID;
 
     private static final boolean isDebug = false;
-    private static final int debugTicksBetweenMessages = 20 * 5; // 5 seconds
+    private static final int debugTicksBetweenMessages = 20 * 7; // 7 seconds
 
     public static void initialize() {
         if(isInitialized) {
@@ -90,7 +90,7 @@ public class ConfigSettings {
                     else {
                         Message message = parseMessage(line);
                         if(!message.Enabled) continue;
-                        messages.add(parseMessage(line));
+                        messages.add(message);
                     }
                 }
             }
@@ -102,7 +102,7 @@ public class ConfigSettings {
 
     private static Message parseMessage(String line) {
         // line will be in format of:
-        // {id=#, title="String", message="String", enabled=boolean, titleColor="String", messageColor="String"},
+        // {id=#, title="String which does not contain a comma", message="String which does not contain a comma", enabled=boolean, titleColor="String", messageColor="String"},
         // parse the line and create a new Message object
         String[][] parts = Arrays.stream(line.split(",")).map(s -> s.trim().replace("\"", "").split("=")).toArray(String[][]::new);
         int id = Integer.parseInt(parts[0][1]);
