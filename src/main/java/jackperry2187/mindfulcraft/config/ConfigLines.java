@@ -22,7 +22,7 @@ public class ConfigLines {
 //                "# If you are adding your own messages, it is recommended to set this to true",
 //                "# If you are updating the mod and want the most recent list of messages, it is recommended to set this to false",
 //                "skipConfigVersionCheck=false",
-                "###",
+//                "###",
                 "# If this is set to false, the mod will never send messages",
                 "enabled=" + enabled,
                 "###",
@@ -32,7 +32,8 @@ public class ConfigLines {
                 "###",
                 "# The messages that will be sent to the player",
                 "# These messages are chosen randomly every time a message is sent, and will try not to repeat the same message twice in a row",
-                "# ",
+                "# The ID should be unique for each message, and should be a whole number, but the actual ID doesn't matter",
+                "# Except for the message with ID 0, which will be sent first when a player joins a world",
                 "# If the list is empty, the mod will not send any messages",
                 "messages=["
         ));

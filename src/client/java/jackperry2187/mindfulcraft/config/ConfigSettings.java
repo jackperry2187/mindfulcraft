@@ -88,6 +88,8 @@ public class ConfigSettings {
                         isReadingMessages = false;
                     }
                     else {
+                        Message message = parseMessage(line);
+                        if(!message.Enabled) continue;
                         messages.add(parseMessage(line));
                     }
                 }
