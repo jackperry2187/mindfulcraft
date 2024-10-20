@@ -30,7 +30,7 @@ public class ConfigSettings {
     public static int lowestID;
     public static int highestID;
 
-    private static final boolean isDebug = true;
+    private static final boolean isDebug = false;
     private static final int debugTicksBetweenMessages = 20 * 5; // 5 seconds
 
     public static void initialize() {

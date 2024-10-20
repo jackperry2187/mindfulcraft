@@ -1,6 +1,6 @@
-![Mindfulcraft](./src/main/resources/assets/mindfulcraft/icon_lg.png)  
+![MindfulCraft](./src/main/resources/assets/mindfulcraft/icon_lg.png)  
 
-**Mindfulcraft** is a mod that sends mindful messages to the player every so often based on a customizable config file.
+**MindfulCraft** is a mod that sends mindful messages to the player every so often based on a customizable config file.
 
 ## Features  
 - [x] Generates a config file on client startup if one doesn't exist
