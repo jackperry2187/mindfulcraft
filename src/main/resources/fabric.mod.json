@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "mindfulcraft",
+	"version": "${version}",
+	"name": "MindfulCraft",
+	"description": "MindfulCraft sends mindful messages to the player every so often based on a customizable config file.",
+	"authors": [
+		"jackperry2187"
+	],
+	"contact": {
+		"homepage": "https://jackperry2187.com/",
+		"sources": "https://github.com/jackperry2187/mindfulcraft"
+	},
+	"license": "GNU-GPL-3.0",
+	"icon": "assets/mindfulcraft/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"jackperry2187.mindfulcraft.MindfulCraft"
+		],
+		"client": [
+			"jackperry2187.mindfulcraft.MindfulCraftClient"
+		],
+		"fabric-datagen": [
+			"jackperry2187.mindfulcraft.MindfulCraftDataGenerator"
+		]
+	},
+	"mixins": [
+		"mindfulcraft.mixins.json",
+		{
+			"config": "mindfulcraft.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.7",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
