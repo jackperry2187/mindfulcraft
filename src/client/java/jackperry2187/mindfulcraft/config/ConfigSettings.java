@@ -2,6 +2,8 @@ package jackperry2187.mindfulcraft.config;
 
 import jackperry2187.mindfulcraft.MindfulCraft;
 import jackperry2187.mindfulcraft.util.Message;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
@@ -14,6 +16,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+@Environment(value = EnvType.CLIENT)
 public class ConfigSettings {
     private static boolean isInitialized = false;
 
@@ -48,7 +51,7 @@ public class ConfigSettings {
 
         messages.sort(Comparator.comparingInt(m -> m.ID));
         lowestID = messages.get(1).ID; // skip the initial message
-        highestID = messages.get(messages.size() - 1).ID;
+        highestID = messages.getLast().ID;
 
         isInitialized = true;
         if(isDebug) logConfigSettings();

@@ -1,7 +1,9 @@
 package jackperry2187.mindfulcraft;
 
+import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +17,11 @@ public class MindfulCraft implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Initializing MindfulCraft...");
 
-		generateConfigFile();
+		if(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+			generateConfigFile();
+		} else {
+			LOGGER.warn("MindfulCraft is a client-side mod and will not be loaded on the server!");
+		}
 
         LOGGER.info("Initialized Successfully!");
 	}

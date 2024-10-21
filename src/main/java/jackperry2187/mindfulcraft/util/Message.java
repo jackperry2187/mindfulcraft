@@ -1,11 +1,14 @@
 package jackperry2187.mindfulcraft.util;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
 import static jackperry2187.mindfulcraft.config.DefaultSettings.*;
 
+@Environment(value = EnvType.CLIENT)
 public class Message {
     private static int messageCount = 0;
     public int ID;

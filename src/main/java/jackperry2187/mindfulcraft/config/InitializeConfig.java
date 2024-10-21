@@ -1,6 +1,8 @@
 package jackperry2187.mindfulcraft.config;
 
 import jackperry2187.mindfulcraft.MindfulCraft;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.IOException;
@@ -10,6 +12,7 @@ import java.nio.file.StandardOpenOption;
 
 import static jackperry2187.mindfulcraft.config.ConfigLines.getBaseConfigLines;
 
+@Environment(value = EnvType.CLIENT)
 public class InitializeConfig {
     private final static Path configPath = FabricLoader.getInstance().getConfigDir();
     private final static Path modConfigFile = configPath.resolve(MindfulCraft.MOD_ID + "-config.toml");

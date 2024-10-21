@@ -2,15 +2,19 @@ package jackperry2187.mindfulcraft.util;
 
 import jackperry2187.mindfulcraft.MindfulCraft;
 import jackperry2187.mindfulcraft.config.ConfigSettings;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.toast.SystemToast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Environment(value = EnvType.CLIENT)
 public class SendClientMessage {
     private static int lastMessageIndex = -1;
-    private static final List<Integer> idsOfSentMessages = new ArrayList<>();
+    private static int numberOfMessagesSent = 0;
+    private static final List<Integer> idsOfUnsentMessages = new ArrayList<>();
 
     public static void sendInitialMessage(MinecraftClient client) {
         if(lastMessageIndex != -1) {
@@ -26,7 +30,6 @@ public class SendClientMessage {
                 intialMessage.Description
         ));
 
-        idsOfSentMessages.add(intialMessage.ID);
         lastMessageIndex = 0;
     }
 
@@ -36,27 +39,33 @@ public class SendClientMessage {
             return;
         }
 
-        if(idsOfSentMessages.size() == ConfigSettings.messages.size() - 1) {
-            MindfulCraft.LOGGER.info("All messages have been sent! Resetting sent messages.");
-            idsOfSentMessages.clear();
+        if(numberOfMessagesSent == ConfigSettings.messages.size() - 1) {
+            numberOfMessagesSent = 0;
+            idsOfUnsentMessages.clear();
         }
 
-        // generate a number between ConfigSettings.lowestID and ConfigSettings.highestID
-        int nextMessageIndex = (int) (Math.random() * (ConfigSettings.highestID - ConfigSettings.lowestID + 1) + ConfigSettings.lowestID);
-        while(idsOfSentMessages.contains(nextMessageIndex) || nextMessageIndex == lastMessageIndex) {
-            nextMessageIndex = (int) (Math.random() * (ConfigSettings.highestID - ConfigSettings.lowestID + 1) + ConfigSettings.lowestID);
-        }
+        if(idsOfUnsentMessages.isEmpty()) resetIdsOfUnsentMessages();
 
-        Message nextMessage = ConfigSettings.messages.get(nextMessageIndex);
+        // generate a random index to get the next message
+        int nextMessageIndex = (int) (Math.random() * (idsOfUnsentMessages.size() - 1));
+        Message nextMessage = ConfigSettings.messages.get(idsOfUnsentMessages.get(nextMessageIndex));
 
         client.getToastManager().add(SystemToast.create(
-                MinecraftClient.getInstance(),
+                client,
                 SystemToast.Type.PERIODIC_NOTIFICATION,
                 nextMessage.Title,
                 nextMessage.Description
         ));
 
-        idsOfSentMessages.add(nextMessage.ID);
+        numberOfMessagesSent++;
+        idsOfUnsentMessages.remove(nextMessageIndex);
         lastMessageIndex = nextMessageIndex;
+    }
+
+    private static void resetIdsOfUnsentMessages() {
+        if(!idsOfUnsentMessages.isEmpty()) idsOfUnsentMessages.clear();
+        for(int i = ConfigSettings.lowestID; i <= ConfigSettings.highestID; i++) {
+            idsOfUnsentMessages.add(i);
+        }
     }
 }

@@ -1,6 +1,8 @@
 package jackperry2187.mindfulcraft.config;
 
 import jackperry2187.mindfulcraft.util.Message;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,6 +10,7 @@ import java.util.List;
 
 import static jackperry2187.mindfulcraft.config.DefaultSettings.*;
 
+@Environment(value = EnvType.CLIENT)
 public class ConfigLines {
     public static List<String> getBaseConfigLines() {
         List<String> initialList = new ArrayList<>(Arrays.asList(

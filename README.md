@@ -3,9 +3,9 @@
 **MindfulCraft** is a mod that sends mindful messages to the player every so often based on a customizable config file.
 
 ## Features  
-- [x] Generates a config file on client startup if one doesn't exist
-- [x] Checks version of config file to guarantee latest message updates
-- [x] Client reads from config file to get settings
+- [X] Generates a config file on client startup if one doesn't exist
+- [X] Checks version of config file to guarantee latest message updates
+- [X] Client reads from config file to get settings
 - [X] On world join, sends an initial message if the mod is enabled
 - [X] Every X ticks, based on config, sends a mindful message
 - [X] When all messages are sent (in a random order with no repeats), resets the list and starts over
@@ -14,6 +14,11 @@
   - Current # of unique messages: **20**
 - [X] Improve config understandability (see [Config Guide](#config-guide))
 - [ ] Implement more options into config, possibly split into multiple files
+- [ ] Add commands for:
+  - [ ] Sending a message to a player (randomly selected like normal)
+  - [ ] Viewing time left until next one would be sent to a player
+  - [ ] Enabling/Disabling the mod
+  - [ ] Changing the interval between messages
 - [ ] Super stretch: create own UI popup with more customization as opposed to using Minecraft's built-in toast system
 
 ## Message Examples

@@ -1,6 +1,8 @@
 package jackperry2187.mindfulcraft.config;
 
 import jackperry2187.mindfulcraft.util.Message;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -12,6 +14,7 @@ import java.util.List;
 import static jackperry2187.mindfulcraft.util.Message.generateSimpleMessage;
 import static jackperry2187.mindfulcraft.util.Message.generateUniqueMessage;
 
+@Environment(value = EnvType.CLIENT)
 public class DefaultSettings {
     public static final int configVersion = 2;
     public static final boolean enabled = true;
