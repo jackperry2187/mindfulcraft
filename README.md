@@ -13,12 +13,8 @@
   - Current # of simple messages: **18**
   - Current # of unique messages: **20**
 - [X] Improve config understandability (see [Config Guide](#config-guide))
+- [X] Add tons of commands for customization (see [Command Guide](#command-guide))
 - [ ] Implement more options into config, possibly split into multiple files
-- [ ] Add commands for:
-  - [ ] Sending a message to a player (randomly selected like normal)
-  - [ ] Viewing time left until next one would be sent to a player
-  - [ ] Enabling/Disabling the mod
-  - [ ] Changing the interval between messages
 - [ ] Super stretch: create own UI popup with more customization as opposed to using Minecraft's built-in toast system
 
 ## Message Examples
@@ -58,3 +54,48 @@ Adding messages should be done in the following format:
 ```js
  "black", "dark_blue", "dark_green", "dark_aqua", "dark_red", "dark_purple", "gold", "gray", "dark_gray", "blue", "green", "aqua", "red", "light_purple", "yellow", "white"
 ```
+
+## Command Guide
+Required arguments are surrounded by `[brackets]`  
+
+### `/mindfulcraft` and `/mindfulcraft help`
+- Displays the help message
+
+### `/mindfulcraft get TimeRemaining`
+- Displays the time remaining until the next message is sent
+
+### `/mindfulcraft get ConfigPath`
+- Displays the path to the config file
+
+### `/mindfulcraft get ConfigVersion`
+- Displays the version of the config file
+
+### `/mindfulcraft get TicksBetweenMessages`
+- Displays the number of ticks between messages, as well as minutes and seconds
+
+### `/mindfulcraft get Messages [pageNumber]`
+- Displays 5 messages at a time, starting at the page number specified
+
+### `/mindfulcraft set TicksBetweenMessages [ticks]`
+- Sets the number of ticks between messages
+
+### `/mindfulcraft set Message [id] [title] [message] [enabled] [titleColor] [messageColor]`
+- Overwrites the title, message, enabled status, and colors of a message by ID
+
+### `/mindfulcraft add Message [title] [message] [enabled] [titleColor] [messageColor]`
+- Adds a new message with the specified title, message, enabled status, and colors
+
+### `/mindfulcraft remove Message [id]`
+- Removes a message by ID
+
+### `/mindfulcraft enable MindfulCraft`
+- Enables the mod
+
+### `/mindfulcraft enable Message [id]`
+- Enables a message by ID
+
+### `/mindfulcraft disable MindfulCraft`
+- Disables the mod
+
+### `/mindfulcraft disable Message [id]`
+- Disables a message by ID

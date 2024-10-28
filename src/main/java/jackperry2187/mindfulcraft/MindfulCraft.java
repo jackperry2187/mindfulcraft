@@ -25,4 +25,8 @@ public class MindfulCraft implements ModInitializer {
 
         LOGGER.info("Initialized Successfully!");
 	}
+
+	public static Identifier id(String path) {
+		return Identifier.of(MOD_ID, path);
+	}
 }

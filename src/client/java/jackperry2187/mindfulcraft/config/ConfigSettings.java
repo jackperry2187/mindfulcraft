@@ -20,18 +20,17 @@ import java.util.List;
 public class ConfigSettings {
     private static boolean isInitialized = false;
 
-    private static final Path configPath = FabricLoader.getInstance().getConfigDir();
-    private static final Path modConfigFile = configPath.resolve(MindfulCraft.MOD_ID + "-config.toml");
+    public static final Path configPath = FabricLoader.getInstance().getConfigDir();
+    public static final Path modConfigFile = configPath.resolve(MindfulCraft.MOD_ID + "-config.toml");
 
-    private static int configVersion;
+    public static int configVersion;
     // TODO: private static boolean skipConfigVersionCheck;
 
     public static boolean enabled;
     public static int ticksBetweenMessages;
 
     public static List<Message> messages = new ArrayList<>();
-    public static int lowestID;
-    public static int highestID;
+    public static int highestMessageID = 0;
 
     private static final boolean isDebug = false;
     private static final int debugTicksBetweenMessages = 20 * 7; // 7 seconds
@@ -41,6 +40,7 @@ public class ConfigSettings {
             MindfulCraft.LOGGER.error("ConfigSettings have already been initialized!");
             return;
         }
+
         if(!Files.exists(modConfigFile)) {
             MindfulCraft.LOGGER.error("Config file does not exist!");
             throw new RuntimeException("Config file does not exist!");
@@ -50,8 +50,7 @@ public class ConfigSettings {
         if(isDebug) ticksBetweenMessages = debugTicksBetweenMessages;
 
         messages.sort(Comparator.comparingInt(m -> m.ID));
-        lowestID = messages.get(1).ID; // skip the initial message
-        highestID = messages.getLast().ID;
+        highestMessageID = messages.getLast().ID;
 
         isInitialized = true;
         if(isDebug) logConfigSettings();
@@ -91,9 +90,7 @@ public class ConfigSettings {
                         isReadingMessages = false;
                     }
                     else {
-                        Message message = parseMessage(line);
-                        if(!message.Enabled) continue;
-                        messages.add(message);
+                        messages.add(parseMessage(line));
                     }
                 }
             }

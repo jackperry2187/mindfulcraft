@@ -64,8 +64,10 @@ public class SendClientMessage {
 
     private static void resetIdsOfUnsentMessages() {
         if(!idsOfUnsentMessages.isEmpty()) idsOfUnsentMessages.clear();
-        for(int i = ConfigSettings.lowestID; i <= ConfigSettings.highestID; i++) {
-            idsOfUnsentMessages.add(i);
+
+        for (Message message : ConfigSettings.messages) {
+            if(!message.Enabled) continue;
+            idsOfUnsentMessages.add(message.ID);
         }
     }
 }

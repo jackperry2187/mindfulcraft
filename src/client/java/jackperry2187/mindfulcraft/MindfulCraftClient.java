@@ -5,15 +5,20 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 
+import static jackperry2187.mindfulcraft.clientCommands.RegisterCommands.*;
 import static jackperry2187.mindfulcraft.util.SendClientMessage.*;
 
 public class MindfulCraftClient implements ClientModInitializer {
-	private static int tickCounter = 0;
+	public static int tickCounter = 0;
 	private static final MinecraftClient client = MinecraftClient.getInstance();
 	@Override
 	public void onInitializeClient() {
 		// initialize the config settings
 		ConfigSettings.initialize();
+
+		// initialize client arguments and commands
+		registerArguments();
+		registerClientCommands();
 
 		ClientTickEvents.END_WORLD_TICK.register(world -> {
 			// EnvType == EnvType.CLIENT
