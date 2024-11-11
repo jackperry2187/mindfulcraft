@@ -1,6 +1,8 @@
 ![MindfulCraft](./src/main/resources/assets/mindfulcraft/icon_lg.png)  
 
-**MindfulCraft** is a mod that sends mindful messages to the player every so often based on a customizable config file.
+**MindfulCraft** is a mod that sends mindful messages to the player every so often based on a customizable config file.  
+Available for download on both [Curseforge](https://www.curseforge.com/minecraft/mc-mods/gentlereminders) and [Modrinth](https://modrinth.com/mod/gentlereminders).  
+Thank you for over 150 downloads!  
 
 ## Features  
 - [X] Generates a config file on client startup if one doesn't exist
